@@ -10,20 +10,20 @@ const Navbar = () => {
     }
   return (
     <nav className="sticky top-0 z-50 py-3 backdrop-blur-lg border-b border-neutral-700/80">
-        <div className="container px-4 mx-auto relative text-sm">
-            <div className="flex justify-between items-center">
-                <div className="flex items-center flex-shrink-0">
+        <div className="container mx-auto relative text-sm">
+            <div className="flex items-center">
+                <div className="flex items-center flex-shrink-0 mr-auto" >
                     <img src={logo} alt='logo' className="h-10 w-10 mr-2" />
                     <span className="text-xl tracking-tight">Nova</span>
                 </div>
-                <ul className="hidden lg:flex ml-5 space-x-12">
+                <ul className="hidden lg:flex space-x-12 mr-auto">
             {navItems.map((item, index) => (
               <li key={index}>
                 <a href={item.href}>{item.label}</a>
               </li>
             ))}
           </ul>
-          <div className="hidden lg:flex justify-center items-center space-x-12">
+          <div className="hidden lg:flex justify-center items-center space-x-5">
             <a href="#" className="py-2 px-3 border rounded-md">
                 Sign-In
             </a>
@@ -41,12 +41,12 @@ const Navbar = () => {
                 <div className="fixed right-0 z-20 bg-neutral-900 w-full p-12 flex-col justify-center items-center lg:hidden">
                     <ul>
                         {navItems.map((item,index)=>(
-                            <li key={index} className="py-4">
+                            <li key={index} className="py-4 border-b">
                                 <a href={item.href}>{item.label}</a>
                             </li>
                         ))}
                     </ul>
-                    <div className="flex space-x-6">
+                    <div className="flex space-x-6 mt-5">
                     <a href="#" className="py-2 px-3 border rounded-md">
                 Sign-In
             </a>
