@@ -2,7 +2,7 @@ import React from 'react'
 
 const Signin = () => {
   return (
-    <div className='max-w-[700px] bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg border border-white border-opacity-20 p-7 rounded-lg shadow-lg'>
+    <div className='max-w-[700px] bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg border border-white border-opacity-20 p-20 rounded-lg shadow-lg'>
         <div className='flex flex-col items-center'>
             <h1 className='bg-gradient-to-r from-orange-500 to-red-800 text-transparent bg-clip-text text-4xl '>Welcome Back</h1>
             <p className='mt-2 text-lg capitalize text-neutral-400'>welcome back! please enter your details.</p>
@@ -12,7 +12,7 @@ const Signin = () => {
             <input type="text" id='email' className='border border-orange-500 rounded-lg p-1'/>
         </div>
         <div className='grid grid-cols-1 gap-2 mt-8'>
-            <label htmlFor="email">Password</label>
+            <label htmlFor="password">Password</label>
             <input type="password" id='password' className='border border-orange-500 rounded-lg p-1'/>
         </div>
         <div className='mt-8 flex items-center justify-between'>
