@@ -10,7 +10,7 @@ export default function () {
         <span className='bg-gradient-to-r from-orange-500 to-red-800 text-transparent bg-clip-text capitalize'>post</span>
        
         </p>
-     <h1 className='mt-2 text-4xl sm:text-6xl lg:text-4xl text-center tracking-wide capitalize text-neutral-500'>Today {date}</h1>
+     <h1 className='mt-4 text-4xl sm:text-6xl lg:text-4xl text-center tracking-wide capitalize text-neutral-500'>Today {date}</h1>
 
      <div className="mt-8 w-2/3 ">
         <img src={img1} alt="random pic" className=' object-cover  rounded-md ' />

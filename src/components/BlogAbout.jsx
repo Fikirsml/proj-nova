@@ -13,8 +13,8 @@ export default function BlogAbout() {
         >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda quidem sit dicta aut, aliquid asperiores obcaecati illo maiores, harum consequuntur excepturi ea perferendis eveniet, totam rerum dolorum nostrum ipsum ex?
         </p>
       </div>
-      <div className='mt-10'>
-        <h4 className='text-3xl tracking-wide  text-orange-500 bg-white/10 backdrop-blur-lg rounded-full px-2 py-1'>For You </h4>
+      <div className='mt-40'>
+        <h4 className='text-xl tracking-wide  text-orange-500 bg-white/10 backdrop-blur-lg rounded-full px-2 py-1 text-center'>For You </h4>
         <ul className='mt-2 space-y-2 text-neutral-300 cursor-pointer px-3 '>
             <li className='hover:text-white'> something 1 </li>
             <li className='hover:text-white'>something 2</li>
@@ -22,8 +22,8 @@ export default function BlogAbout() {
             <li className='hover:text-white'>something 4</li>
         </ul>
       </div>
-      <div className='mt-10 '>
-        <h4 className='text-3xl tracking-wide text-orange-500 bg-white/10 backdrop-blur-lg rounded-full px-2 py-1'>Latest</h4>
+      <div className='mt-20 '>
+        <h4 className='text-xl tracking-wide text-orange-500 bg-white/10 backdrop-blur-lg rounded-full px-2 py-1 text-center'>Latest</h4>
         <ul className='mt-2 space-y-2 text-neutral-300 cursor-pointer px-3'>
              <li className='hover:text-white'>something 1 </li>
             <li className='hover:text-white'>something 2</li>
@@ -31,8 +31,8 @@ export default function BlogAbout() {
             <li className='hover:text-white'>something 4</li>
         </ul>
       </div>
-      <div className='mt-10 '>
-        <h4 className='text-3xl tracking-wide text-orange-500 bg-white/10 backdrop-blur-lg rounded-full px-2 py-1'>Popular</h4>
+      <div className='mt-20 '>
+        <h4 className='text-xl tracking-wide text-orange-500 bg-white/10 backdrop-blur-lg rounded-full px-2 py-1 text-center'>Popular</h4>
         <ul className='mt-2 space-y-2 text-neutral-300 cursor-pointer px-3'>
              <li className='hover:text-white'>something 1 </li>
             <li className='hover:text-white'>something 2</li>
