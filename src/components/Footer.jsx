@@ -49,8 +49,8 @@ const Footer = () => {
 
 
     </footer>
-        <div className="mt-5 flex items-center justify-center text-sm">
-           <span>noVa 2024</span> &nbsp; <Copyright/> &nbsp; <span> All Rights Reserved.</span>
+        <div className="mt-5 flex items-center justify-center text-xs ">
+           <span>noVa 2024</span> &nbsp; <Copyright className="text-orange-500"/> &nbsp; <span> All Rights Reserved.</span>
         </div>
         </>
   )
