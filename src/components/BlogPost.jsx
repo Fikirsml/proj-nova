@@ -13,7 +13,7 @@ export default function () {
      <h1 className='mt-4 text-4xl sm:text-6xl lg:text-4xl text-center tracking-wide capitalize text-neutral-500'>Today {date}</h1>
 
      <div className="mt-8 w-2/3 ">
-        <img src={img1} alt="random pic" className=' object-cover  rounded-md ' />
+        <img src={img1} alt="random pic" className=' object-cover  rounded-lg border-2 border-orange-400 shadow-xl ' />
         <div>
             <h2 className='mt-10 text-4xl capitalize text-orange-500 bg-neutral-900 rounded-full px-1 py-1 mb-4 text-center w-60' >
                 Sometitle
@@ -40,7 +40,7 @@ export default function () {
         </div>
      </div>
      <div className="mt-32 w-2/3 ">
-        <img src={img1} alt="random pic" className=' object-cover  rounded-md ' />
+        <img src={img1} alt="random pic" className=' object-cover  rounded-lg border-2 border-orange-400 shadow-xl ' />
         <div>
             <h2 className='mt-10 text-4xl capitalize text-orange-500 bg-neutral-900 rounded-full px-1 py-1 mb-4 text-center w-60' >
                 Sometitle
