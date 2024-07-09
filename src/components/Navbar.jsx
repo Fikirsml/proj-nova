@@ -16,10 +16,13 @@ const Navbar = (props) => {
     <nav className="sticky top-0 z-50 py-3 backdrop-blur-lg border-b border-neutral-700/80">
         <div className="container mx-auto relative text-sm">
             <div className="flex items-center">
-                <div className="flex items-center flex-shrink-0 mr-auto" >
+                
+
+                    <Link to='/' className="flex items-center flex-shrink-0 mr-auto">
                     <img src={logo} alt='logo' className="h-10 w-10 mr-2" />
                     <span className="text-xl tracking-tight">Nova</span>
-                </div>
+                    </Link>
+               
                 <ul className="hidden lg:flex space-x-12 mr-auto">
             {props.type==='nav' &&    navItems.map((item, index) => (
               <li key={index}>
