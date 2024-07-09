@@ -1,9 +1,13 @@
+import { Link } from "react-router-dom"
 import {Menu,X} from "lucide-react"
 import { useState } from "react"
 import logo from "../assets/logo.png"
 import {navItems} from "../constants"
+import {navItems2} from "../constants"
+import Profile from "./Profile"
+import NavSnip from "./NavSnip"
 
-const Navbar = () => {
+const Navbar = (props) => {
     const [mobileDrawerOpen, setMobileDrawerOpen]=useState(false);
     const handleDrawer=()=>{
         setMobileDrawerOpen(!mobileDrawerOpen)
@@ -17,19 +21,27 @@ const Navbar = () => {
                     <span className="text-xl tracking-tight">Nova</span>
                 </div>
                 <ul className="hidden lg:flex space-x-12 mr-auto">
-            {navItems.map((item, index) => (
+            {props.type==='nav' &&    navItems.map((item, index) => (
               <li key={index}>
                 <a href={item.href}>{item.label}</a>
               </li>
             ))}
+
+{props.type==='profile' &&    navItems2.map((item, index) => (
+              <li key={index}>
+                <Link to={item.to}>{item.label}</Link>
+              </li>
+            ))}
           </ul>
           <div className="hidden lg:flex justify-center items-center space-x-5">
-            <a href="#" className="py-2 px-3 border rounded-md">
+            {/* <a href="#" className="py-2 px-3 border rounded-md">
                 Sign-In
             </a>
             <a href="#" className="bg-gradient-to-r from-orange-500 to-orange-800 py-2 px-3 border rounded-md">
                 Create an account
-            </a>
+            </a> */}
+
+            {props.type==='nav'?<NavSnip/>:<Profile/>}
           </div>
           <div className="lg:hidden md:flex flex-col justify-end">
             <button onClick={handleDrawer}>

@@ -5,7 +5,7 @@ import SmallFooter from "../components/SmallFooter"
 export default function ServicesPage() {
   return (
     <>
-    <Navbar />
+    <Navbar type='profile'/>
    
     <div className="flex flex-col max-w-7xl mx-auto  pt-10 px-6  ">
 

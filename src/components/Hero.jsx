@@ -1,3 +1,4 @@
+import { Link,NavLink } from "react-router-dom"
 import video1 from "../assets/video1.mp4"
 import video2 from "../assets/video2.mp4"
 
@@ -19,7 +20,10 @@ const Hero = () => {
 
         </p>
         <div className="flex justify-center my-10">
-            <a href="#" className="bg-gradient-to-r from-orange-500 to-orange-800 py-3 px-4 mx-3 rounded-md"> Start for free</a>
+            <Link to="signin" className="bg-gradient-to-r from-orange-500 to-orange-800 py-3 px-4 mx-3 rounded-md">
+            Start for free
+            </Link>
+            {/* <a href="#" className="bg-gradient-to-r from-orange-500 to-orange-800 py-3 px-4 mx-3 rounded-md"> Start for free</a> */}
             <a href="#" className="py-3 px-3 border mx-3 rounded-md">
                 Documentation
             </a>

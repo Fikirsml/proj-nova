@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CircleMinus,CirclePlus,ArrowUpNarrowWide,ArrowDownNarrowWide } from "lucide-react";
 
 
-const AccMenu = ({ title,rank,disabled }) => {
+const AccMenu = ({ title,rank }) => {
   const [accordionOpen, setAccordionOpen] = useState(false);
 
   return (

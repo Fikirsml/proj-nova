@@ -1,6 +1,6 @@
 import { Link,NavLink } from "react-router-dom"
 
-const Signin = () => {
+const Signup = () => {
   return (
     <div className='max-w-[700px] bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg border border-white border-opacity-20 p-20 rounded-lg shadow-lg'>
         <div className='flex flex-col items-center'>
@@ -15,18 +15,20 @@ const Signin = () => {
             <label htmlFor="password">Password</label>
             <input type="password" id='password' className='border border-orange-500 rounded-lg p-1'/>
         </div>
+        <div className='grid grid-cols-1 gap-2 mt-8'>
+            <label htmlFor="password">Confirm Password</label>
+            <input type="password" id='password' className='border border-orange-500 rounded-lg p-1'/>
+        </div>
         <div className='mt-8 flex items-center justify-between'>
             <div>
                 <input type="checkbox" name="" id="forget password" className='mr-1'/>
                 <label htmlFor="forget password"> Rememeber Me</label>
             </div>
-            <div>
-                <a href="#" className='text-orange-500'>Forgot Password</a>
-            </div>
+        
         </div>
         <div className='mt-8 flex items-center justify-center'>
             <Link to="/blog"  className='active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out transition-all w-full py-3 bg-gradient-to-r from-orange-500 to-orange-800 rounded-xl border text-center'>
-            Sign in
+            Sign Up
             </Link>
             {/* <button className='active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out transition-all w-full py-3 bg-gradient-to-r from-orange-500 to-orange-800 rounded-xl border'>
                 Sign in
@@ -35,9 +37,9 @@ const Signin = () => {
         </div>
         <div className='mt-8 flex justify-center'>
             <p>
-                Don't have an account ? &nbsp; <span className='text-orange-500'>
-                    <Link to='/signup'>
-                    Sign Up
+                have an account ? &nbsp; <span className='text-orange-500'>
+                    <Link to='/signin'>
+                    Sign In
                     </Link>
                 </span>
             </p>
@@ -47,4 +49,4 @@ const Signin = () => {
   )
 }
 
-export default Signin
+export default Signup

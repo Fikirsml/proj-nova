@@ -8,7 +8,7 @@ import { Github,Instagram,Twitter,CodeXml } from "lucide-react"
 export default function BlogPage() {
   return (
     <>
-      <Navbar/>
+      <Navbar type="profile"/>
     <div className="">
 
       <div className="flex max-w-7xl mx-auto pt-10 px-6  ">

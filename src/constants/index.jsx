@@ -19,6 +19,14 @@ export const navItems = [
   { label: "Testimonials", href: "#" },
 ];
 
+export const navItems2=[
+  {label:"Blog",to:'/blog'},
+  {label:"Services",to:'/services'},
+  {label:"Pending",to:'/pending'},
+  {label:"DashBoard",to:'/dash'},
+  
+]
+
 export const testimonials = [
   {
     user: "John Doe",
