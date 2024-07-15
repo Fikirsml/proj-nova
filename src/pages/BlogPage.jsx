@@ -12,7 +12,7 @@ export default function BlogPage() {
     <div className="">
 
       <div className="flex max-w-7xl mx-auto pt-10 px-6  ">
-    <div className="w-2/3 grid grid-cols-1 border-r border-orange-500 ">
+    <div className="w-2/3 grid grid-cols-1 border-r border-neutral-600 ">
       <BlogPost/>
 
       <div className="mt-20">

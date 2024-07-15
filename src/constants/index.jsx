@@ -25,7 +25,9 @@ export const navItems2=[
   {label:"Pending",to:'/pending'},
   {label:"DashBoard",to:'/dash'},
   
-]
+];
+
+
 
 export const testimonials = [
   {

@@ -11,7 +11,7 @@ const AccMenu = ({ title,rank }) => {
         onClick={() => setAccordionOpen(!accordionOpen)}
         className="flex justify-between w-full"
       >
-        <span className="text-4xl sm:text-6xl lg:text-5xl text-center tracking-wide  capitalize">{title}<span className='capitalize bg-gradient-to-r from-orange-500 to-red-400 text-transparent bg-clip-text text-xl mb-4 ml-1'>{rank}</span></span> 
+        <span className="text-4xl sm:text-6xl lg:text-3xl text-center text-white tracking-wide  capitalize">{title}<span className='capitalize bg-gradient-to-r from-orange-500 to-red-400 text-transparent bg-clip-text text-xl mb-4 ml-1'>{rank}</span></span> 
         {accordionOpen ? <span><ArrowUpNarrowWide className="text-orange-500" /></span> : <span><ArrowDownNarrowWide className="text-orange-500" /></span>}
         
         {/* <svg
@@ -48,10 +48,10 @@ const AccMenu = ({ title,rank }) => {
             : "grid-rows-[0fr] opacity-0"
         }`}
       >
-        <div className="overflow-hidden w-1/3">
+        <div className="overflow-hidden w-1/3 ">
         <div className='mt-8 grid grid-cols-1 gap-2'>
             <label htmlFor="email">IP Address</label>
-            <input type="text" id='email' className='border border-orange-500 rounded-lg p-1'/>
+            <input type="text" id='email' className='border border-orange-500 rounded-lg p-1 '/>
             <div>
                 <input type="checkbox" name="" id="forget password" className='mr-1'/>
                 <label htmlFor="forget password"> Doesn't Apply</label>

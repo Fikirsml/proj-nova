@@ -3,6 +3,7 @@ import user from '../assets/profile-pictures/user1.jpg'
 import { useState } from "react"
 import Modal from "./Modal"
 import { LogOut } from "lucide-react"
+import { Link } from "react-router-dom"
 const Profile = () => {
     const [open, setOpen] = useState(false)
     return(
@@ -14,17 +15,22 @@ const Profile = () => {
 
 <Modal open={open} onClose={() => setOpen(false)}>
 <div className="text-center w-80">
-<LogOut size={56} className='mx-auto' color="black"/>
+<LogOut size={56} className='mx-auto' color="orange"/>
 <div className="mx-auto my-4 w-50">
-<h3 className="text-xl font-black text-neutral-800 capitalize">we hate to see you leave</h3>
+<h3 className="text-xl font-black text-neutral-200 capitalize">we hate to see you leave</h3>
 <p className="text-sm text-neutral-500">
-              Are you sure you want to Log out?
+              Are you sure you want to Log Out?
 </p>
 </div>
 <div className="flex gap-4">
-<button className="btn btn-danger w-full">Delete</button>
+    <Link to='/' className="bg-gradient-to-r from-orange-500 to-orange-800 py-3 px-6 border rounded-md mr-auto">
+    Log Out
+    </Link>
+
+    {/* <Link className="py-3 px-6 border rounded-md text-neutral-500" onClick={() => setOpen(false)}>Cancel</Link> */}
+{/* <button className="bg-gradient-to-r from-orange-500 to-orange-800 py-3 px-6 border rounded-md mr-auto">Log Out</button> */}
 <button
-className="btn btn-light w-full"
+className="py-3 px-6 border rounded-md text-neutral-500"
 onClick={() => setOpen(false)}
 >
               Cancel
