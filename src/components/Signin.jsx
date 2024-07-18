@@ -1,28 +1,29 @@
 import { useState } from "react"
-import { Link,NavLink } from "react-router-dom"
-import axios from "../axios"
+import { Link,NavLink, useNavigate } from "react-router-dom"
+import axios from "axios"
 
 const Signin = () => {
     const [input,setInput]=useState({
         email:"",
+	username: "",
         password:"",
     })
     const[error,setError]=useState("")
     const [link,setLink]=useState("")
+    const navigate = useNavigate()
 
     const handleInp=(e)=>{
-    const{name,value}=e.target
-    setInput({
-        ...prev,[name]:value,
-    })
-    }
+    setInput({...input, [e.target.name]: e.target.value});
+    };
 
     const handleSignIn=async(e)=>{
         e.preventDefault()
-        const response= await axios.post('/client_signin',{email,password})
+        const response= await axios.post('http://127.0.0.1:5000/client_signin', input)
         const res=response.data
-        if(res && input.email!=="" && input.password!==""){
+	localStorage.setItem('U_id', res["U_id"]);
+        if((res && input.email!=="" && input.password!=="") || res["status"] == true){
             setLink('/dash')
+	    navigate('/dash')
         } else{
             setError("SignIn Unsuccessful!! Incorrect Username or Password")
             alert(error)
@@ -38,12 +39,12 @@ const Signin = () => {
             <p className='mt-2 text-lg capitalize text-neutral-400'>welcome back! please enter your details.</p>
         </div>
         <div className='mt-8 grid grid-cols-1 gap-2'>
-            <label htmlFor="email">Email</label>
-            <input type="text" name="email" value={input.email} onChange={handleInp} className='border border-orange-500 rounded-lg p-1'/>
+            <label htmlFor="email">Username</label>
+            <input type="text" name="username" value={input.username} onChange={handleInp} className='text-gray-700 focus:text-blue-600 border border-orange-500 rounded-lg p-1'/>
         </div>
         <div className='grid grid-cols-1 gap-2 mt-8'>
             <label htmlFor="password">Password</label>
-            <input type="password" name="password" value={input.password} onChange={handleInp} className='border border-orange-500 rounded-lg p-1'/>
+            <input type="password" name="password" value={input.password} onChange={handleInp} className='text-gray-700 focus:text-blue-600 border border-orange-500 rounded-lg p-1'/>
         </div>
         <div className='mt-8 flex items-center justify-between'>
             <div>

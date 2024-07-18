@@ -1,18 +1,48 @@
 import { useEffect, useState } from "react"
-import axios from "../axios"
+import axios from "axios"
 
 
-const PendingPage = () => {
-const[data,setData]=useState([])
+function PendingPage () {
+  const[data, setData]=useState([])
+  const [id, setId] = useState({
+    U_id: `${localStorage.getItem('U_id')}`,
+  });
+  const jsonData = JSON.stringify(id);
+  console.log(typeof(jsonData));
+  const [loading,setLoading]=useState(false)
+  const [error,setError]=useState(null)
+/*
+const handleFetch=async()=>{
+setLoading(true)
+	try{
+	const response= await axios.get('http://127.0.0.1:5000/view_pending', {U_id: "abebe@123"})
+	setData(response.data)
+	console.log(data)
+	setError(null)
+	}catch(err){
+		setError(err.message)
+	}finally{
+		setLoading(false)
+	}
 
+}*/
+
+ // const [id, setId] = useState({localStorage.getItem('U_id')})
   useEffect(()=>{
-    axios
-    .get('/view_pening')
-    .then((response)=>setData(response.data))
-    console.log(data)
-  },[])
+	const fetchData = async () => {
+	  try {
+		console.log(id, typeof(id))
+		const response = await axios.post('http://127.0.0.1:5000/view_pending', id);
+		console.log(response)
+		setData(response.data);	
+	  } catch(error) {
+		  console.error('Error in fetching data:', error);
+	  }
+	};
+	fetchData();
+  },[]);
 
-
+  console.log(data)
 
   return (
 
@@ -27,33 +57,22 @@ const[data,setData]=useState([])
                     </div>
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Product name
+                    Pending Id
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Color
+	            Service Id
                 </th>
-                <th scope="col" class="px-6 py-3">
-                    Category
+                <th scope="col" class="px-6 py-3"> 
+                    Request data
                 </th>
-                <th scope="col" class="px-6 py-3">
-                    Accessories
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Available
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Price
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Weight
-                </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3"> 
                     Action
                 </th>
             </tr>
         </thead>
         <tbody>
           {/* map */}
+	  {data.map((item) =>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="w-4 p-4">
                     <div class="flex items-center">
@@ -62,31 +81,20 @@ const[data,setData]=useState([])
                     </div>
                 </td>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Apple MacBook Pro 17"
+		  {item.P_id}
                 </th>
                 <td class="px-6 py-4">
-                    Silver
+                  {item.S_id}
                 </td>
                 <td class="px-6 py-4">
-                    Laptop
-                </td>
-                <td class="px-6 py-4">
-                    Yes
-                </td>
-                <td class="px-6 py-4">
-                    Yes
-                </td>
-                <td class="px-6 py-4">
-                    $2999
-                </td>
-                <td class="px-6 py-4">
-                    3.0 lb.
+                  {item.s_data}
                 </td>
                 <td class="flex items-center px-6 py-4">
                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                     <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</a>
                 </td>
             </tr>
+	  )}
             {/* map */}
         </tbody>
     </table>
