@@ -1,102 +1,20 @@
-import { RiFlag2Line } from '@remixicon/react';
-import {
-  Badge,
-  Card,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeaderCell,
-  TableRow,
-} from '@tremor/react';
-
-const data = [
-  {
-    name: 'Viola Amherd',
-    Role: 'Federal Councillor',
-    departement:
-      'The Federal Department of Defence, Civil Protection and Sport (DDPS)',
-    status: 'active',
-  },
-  {
-    name: 'Albert Rösti',
-    Role: 'Federal Councillor',
-    departement:
-      'The Federal Department of the Environment, Transport, Energy and Communications (DETEC)',
-    status: 'active',
-  },
-  {
-    name: 'Beat Jans',
-    Role: 'Federal Councillor',
-    departement: 'The Federal Department of Justice and Police (FDJP)',
-    status: 'active',
-  },
-  {
-    name: 'Ignazio Cassis',
-    Role: 'Federal Councillor',
-    departement: 'The Federal Department of Foreign Affairs (FDFA)',
-    status: 'active',
-  },
-  {
-    name: 'Karin Keller-Sutter',
-    Role: 'Federal Councillor',
-    departement: 'The Federal Department of Finance (FDF)',
-    status: 'active',
-  },
-  {
-    name: 'Guy Parmelin',
-    Role: 'Federal Councillor',
-    departement:
-      'The Federal Department of Economic Affairs, Education and Research (EAER)',
-    status: 'active',
-  },
-  {
-    name: 'Elisabeth Baume-Schneider',
-    Role: 'Federal Councillor',
-    departement: 'The Federal Department of Home Affairs (FDHA)',
-    status: 'active',
-  },
-];
+import { useEffect, useState } from "react"
+import axios from "../axios"
 
 
 const PendingPage = () => {
+const[data,setData]=useState([])
+
+  useEffect(()=>{
+    axios
+    .get('/view_pening')
+    .then((response)=>setData(response.data))
+    console.log(data)
+  },[])
+
+
+
   return (
-  //   <div className="mx-auto max-w-2xl">
-  //   <Table>
-  //     <TableHead>
-  //       <TableRow>
-  //         <TableHeaderCell>Name</TableHeaderCell>
-  //         <TableHeaderCell className="text-right">
-  //           Monsters Slayed
-  //         </TableHeaderCell>
-  //         <TableHeaderCell>Region</TableHeaderCell>
-  //         <TableHeaderCell>Status</TableHeaderCell>
-  //       </TableRow>
-  //     </TableHead>
-
-  //     <TableBody>
-  //       <TableRow>
-  //         <TableCell>Wilhelm Tell</TableCell>
-  //         <TableCell className="text-right">1</TableCell>
-  //         <TableCell>Uri, Schwyz, Unterwalden</TableCell>
-  //         <TableCell>National Hero</TableCell>
-  //       </TableRow>
-  //       <TableRow>
-  //         <TableCell>The Witcher</TableCell>
-  //         <TableCell className="text-right">129</TableCell>
-  //         <TableCell>Kaedwen</TableCell>
-  //         <TableCell>Legend</TableCell>
-  //       </TableRow>
-  //       <TableRow>
-  //         <TableCell>Mizutsune</TableCell>
-  //         <TableCell className="text-right">82</TableCell>
-  //         <TableCell>Japan</TableCell>
-  //         <TableCell>N/A</TableCell>
-  //       </TableRow>
-  //     </TableBody>
-  //   </Table>
-  // </div>
-
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -135,6 +53,7 @@ const PendingPage = () => {
             </tr>
         </thead>
         <tbody>
+          {/* map */}
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="w-4 p-4">
                     <div class="flex items-center">
@@ -168,7 +87,7 @@ const PendingPage = () => {
                     <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</a>
                 </td>
             </tr>
-            
+            {/* map */}
         </tbody>
     </table>
 </div>

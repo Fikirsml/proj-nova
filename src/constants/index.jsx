@@ -21,8 +21,6 @@ export const navItems = [
 
 export const navItems2=[
   {label:"Blog",to:'/blog'},
-  {label:"Services",to:'/services'},
-  {label:"Pending",to:'/pending'},
   {label:"DashBoard",to:'/dash'},
   
 ];

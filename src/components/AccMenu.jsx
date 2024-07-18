@@ -1,9 +1,29 @@
 import React, { useState } from "react";
 import { CircleMinus,CirclePlus,ArrowUpNarrowWide,ArrowDownNarrowWide } from "lucide-react";
+import axios from "../axios"
 
 
 const AccMenu = ({ title,rank }) => {
+
   const [accordionOpen, setAccordionOpen] = useState(false);
+  const [input,setInput]=useState({
+    ip:"",
+    domain:"",
+})
+
+const handleInp=(e)=>{
+  const{name,value}=e.target
+  setInput({
+    ...prev, [name]:value,
+  })
+
+}
+
+const handleRequest= async()=>{
+  const response= await axios.post('/request',{input})
+  const res=response.data
+  alert(res)
+}
 
   return (
     <div className="px-4 py-4 border border-orange-500 rounded-xl mb-2 bg-neutral-800">
@@ -13,32 +33,7 @@ const AccMenu = ({ title,rank }) => {
       >
         <span className="text-4xl sm:text-6xl lg:text-3xl text-center text-white tracking-wide  capitalize">{title}<span className='capitalize bg-gradient-to-r from-orange-500 to-red-400 text-transparent bg-clip-text text-xl mb-4 ml-1'>{rank}</span></span> 
         {accordionOpen ? <span><ArrowUpNarrowWide className="text-orange-500" /></span> : <span><ArrowDownNarrowWide className="text-orange-500" /></span>}
-        
-        {/* <svg
-          className="fill-indigo-500 shrink-0 ml-8"
-          width="16"
-          height="16"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect
-            y="7"
-            width="16"
-            height="2"
-            rx="1"
-            className={`transform origin-center transition duration-200 ease-out ${
-              accordionOpen && "!rotate-180"
-            }`}
-          />
-          <rect
-            y="7"
-            width="16"
-            height="2"
-            rx="1"
-            className={`transform origin-center rotate-90 transition duration-200 ease-out ${
-              accordionOpen && "!rotate-180"
-            }`}
-          />
-        </svg> */}
+      
       </button>
       <p className="max-w-4xl mt-3 text-neutral-500">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur quis, nisi sapiente expedita dignissimos voluptates, eaque perferendis ex atque mollitia aspernatur consequatur unde facere culpa tenetur dolore fugit labore corrupti.</p>
       <div
@@ -50,22 +45,22 @@ const AccMenu = ({ title,rank }) => {
       >
         <div className="overflow-hidden w-1/3 ">
         <div className='mt-8 grid grid-cols-1 gap-2'>
-            <label htmlFor="email">IP Address</label>
-            <input type="text" id='email' className='border border-orange-500 rounded-lg p-1 '/>
+            <label htmlFor="ip">IP Address</label>
+            <input type="text" id='ip' name='ip' value={input.ip} onChange={handleInp} className='border border-orange-500 rounded-lg p-1 '/>
             <div>
-                <input type="checkbox" name="" id="forget password" className='mr-1'/>
-                <label htmlFor="forget password"> Doesn't Apply</label>
+                <input type="checkbox" name="" id="doesnt apply" className='mr-1'/>
+                <label htmlFor="doesnt apply"> Doesn't Apply</label>
             </div>
         </div>
         <div className='mt-8 grid grid-cols-1 gap-2'>
-            <label htmlFor="email">Domain</label>
-            <input type="text" id='email' className='border border-orange-500 rounded-lg p-1' />
+            <label htmlFor="domain">Domain</label>
+            <input type="text" id='domain' name='domain' value={input.domain} onChange={handleInp} className='border border-orange-500 rounded-lg p-1' />
             <div>
-                <input type="checkbox" name="" id="forget password" className='mr-1'/>
-                <label htmlFor="forget password">Doesn't Apply</label>
+                <input type="checkbox" name="" id="doesnt apply" className='mr-1'/>
+                <label htmlFor="doesnt apply">Doesn't Apply</label>
             </div>
             <div className='mt-8 mb-2 flex items-center justify-center'>
-            <button className='active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out transition-all w-2/3 py-3 bg-gradient-to-r from-orange-500 to-orange-800 rounded-xl border'>
+            <button className='active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out transition-all w-2/3 py-3 bg-gradient-to-r from-orange-500 to-orange-800 rounded-xl border' onClick={handleRequest}>
                 Submit
             </button>
 

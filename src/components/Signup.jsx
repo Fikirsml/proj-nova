@@ -1,6 +1,32 @@
 import { Link,NavLink } from "react-router-dom"
+import axios from "../axios"
 
 const Signup = () => {
+    const [input,setInput]=useState({
+        email:"",
+        password:"",
+    })
+    
+    const[error,setError]=useState("")
+    const [link,setLink]=useState("")
+
+    const handleInp=(e)=>{
+           e.preventDefault()
+           const{name,value}=e.target;
+           setInput({
+            ...prev,[name]:value,
+           })
+    }
+
+    const handleSignUp=async()=>{
+        const response= await axios.post('/signup',{input})
+        const res=response.data
+        if(res && input.email!=="" && input.password!==""){
+            setLink('/dash')
+        }
+
+    }
+
   return (
     <div className='max-w-[700px] bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg border border-white border-opacity-20 p-20 rounded-lg shadow-lg'>
         <div className='flex flex-col items-center'>
@@ -9,11 +35,11 @@ const Signup = () => {
         </div>
         <div className='mt-8 grid grid-cols-1 gap-2'>
             <label htmlFor="email">Email</label>
-            <input type="text" id='email' className='border border-orange-500 rounded-lg p-1'/>
+            <input type="text" name="email" value={input.password} onChange={handleInp} className='border border-orange-500 rounded-lg p-1'/>
         </div>
         <div className='grid grid-cols-1 gap-2 mt-8'>
             <label htmlFor="password">Password</label>
-            <input type="password" id='password' className='border border-orange-500 rounded-lg p-1'/>
+            <input type="password" name='password' value={input.password} onChange={handleInp} className='border border-orange-500 rounded-lg p-1'/>
         </div>
         <div className='grid grid-cols-1 gap-2 mt-8'>
             <label htmlFor="password">Confirm Password</label>
@@ -26,8 +52,8 @@ const Signup = () => {
             </div>
         
         </div>
-        <div className='mt-8 flex items-center justify-center'>
-            <Link to="/blog"  className='active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out transition-all w-full py-3 bg-gradient-to-r from-orange-500 to-orange-800 rounded-xl border text-center'>
+        <div className='mt-8 flex items-center justify-center' onClick={handleSignUp}>
+            <Link to={`${link}`}  className='active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out transition-all w-full py-3 bg-gradient-to-r from-orange-500 to-orange-800 rounded-xl border text-center'>
             Sign Up
             </Link>
             {/* <button className='active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out transition-all w-full py-3 bg-gradient-to-r from-orange-500 to-orange-800 rounded-xl border'>
