@@ -30,6 +30,7 @@ const App = () => {
   
   <Routes>
     <Route  index element={<Home/>}/>
+    <Route  path="/home" element={<Home/>} />
     <Route  path="/signin" element={<SigninPage/>}/>
     <Route  path="/signup" element={<SignupPage/>}/>
     <Route  path="/blog" element={<BlogPage/>}/>

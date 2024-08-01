@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { CircleMinus,CirclePlus,ArrowUpNarrowWide,ArrowDownNarrowWide } from "lucide-react";
 import axios from "axios"
 
 
 function AccMenu () {
 
-  const [serviceInfo, setServiceInfo] = useState([{S_id: "abebe"}])
-  console.log(serviceInfo);
+  const [serviceInfo, setServiceInfo] = useState([])
   const [accordionOpen, setAccordionOpen] = useState(false);
   const [input,setInput]=useState({
 	  ip:"",
@@ -19,14 +18,14 @@ function AccMenu () {
   useEffect (() => {
 	  const fetchData = async () => {
 		  try {
-			  const response = axios.get('http://127.0.0.1:5000/get_services')
+			  const response = await axios.get('http://127.0.0.1:5000/get_services')
 			  setServiceInfo(response.data)
 			  console.log(response.data)
 		  } catch (error) {
 			  console.log('Error in fetching data: ', error)
 		  }
 	  };
-	  fetchData()
+	  fetchData();
   }, []);
 
 const handleInp=(e)=>{
@@ -37,7 +36,7 @@ const handleInp=(e)=>{
 const handleRequest= async()=>{
   const response= await axios.post('http://127.0.0.1:5000/request', input)
   const res=response.data
-  alert(res)
+  alert("Success!! your pending Id: ",res['P_id'])
 }
 const [rank, setRank] = useState('Pro');
 
@@ -64,11 +63,11 @@ const [rank, setRank] = useState('Pro');
         <div className="overflow-hidden w-1/3 ">
         <div className='mt-8 grid grid-cols-1 gap-2'>
             <label htmlFor="ip">Service ID</label>
-            <input type="text" id='ip' name='S_id' value={input.S_id} onChange={handleInp} className='border border-orange-500 rounded-lg p-1 '/>
+            <input type="text" id='ip' name='S_id' value={input.S_id} onChange={handleInp} className='text-blue-600 border border-orange-500 rounded-lg p-1 '/>
         </div>
         <div className='mt-8 grid grid-cols-1 gap-2'>
             <label htmlFor="ip">IP Address</label>
-            <input type="text" id='ip' name='ip' value={input.ip} onChange={handleInp} className='border border-orange-500 rounded-lg p-1 '/>
+            <input type="text" id='ip' name='ip' value={input.ip} onChange={handleInp} className='text-blue-600 border border-orange-500 rounded-lg p-1 '/>
             <div>
                 <input type="checkbox" name="" id="doesnt apply" className='mr-1'/>
                 <label htmlFor="doesnt apply"> Doesn't Apply</label>
@@ -76,7 +75,7 @@ const [rank, setRank] = useState('Pro');
         </div>
         <div className='mt-8 grid grid-cols-1 gap-2'>
             <label htmlFor="domain">Domain</label>
-            <input type="text" id='domain' name='domain' value={input.domain} onChange={handleInp} className='border border-orange-500 rounded-lg p-1' />
+            <input type="text" id='domain' name='domain' value={input.domain} onChange={handleInp} className='text-blue-600 border border-orange-500 rounded-lg p-1' />
             <div>
                 <input type="checkbox" name="" id="doesnt apply" className='mr-1'/>
                 <label htmlFor="doesnt apply">Doesn't Apply</label>
@@ -96,6 +95,7 @@ const [rank, setRank] = useState('Pro');
     ))};
 	  </>
   );
-};
+}
+
 
 export default AccMenu;

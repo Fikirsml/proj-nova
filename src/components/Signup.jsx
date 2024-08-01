@@ -1,28 +1,30 @@
-import { Link,NavLink } from "react-router-dom"
-import axios from "../axios"
+import { Link,NavLink, useNavigate } from "react-router-dom"
+import {useState} from 'react'
+import axios from "axios"
 
 const Signup = () => {
     const [input,setInput]=useState({
         email:"",
         password:"",
+	username:"",
     })
-    
+    const navigate = useNavigate()
     const[error,setError]=useState("")
     const [link,setLink]=useState("")
 
-    const handleInp=(e)=>{
-           e.preventDefault()
-           const{name,value}=e.target;
-           setInput({
-            ...prev,[name]:value,
-           })
+    const handleInp=(e)=>{ setInput({ ...input, [e.target.name]: e.target.value, })
     }
 
-    const handleSignUp=async()=>{
-        const response= await axios.post('/signup',{input})
+    const handleSignUp = async () => {
+        const response= await axios.post('http://127.0.0.1:5000/signup', input)
         const res=response.data
-        if(res && input.email!=="" && input.password!==""){
+	console.log(response.data)
+        if(res && input.email!=="" && input.password!=="" || res["status"] == true ){
             setLink('/dash')
+	    alert('Success!! Welcome to Nova, Your id is: ', res["id"])
+	    localStorage.removeItem('U_id')
+	    localStorage.setItem('U_id', res["id"])
+	    navigate('/dash')
         }
 
     }
@@ -35,15 +37,27 @@ const Signup = () => {
         </div>
         <div className='mt-8 grid grid-cols-1 gap-2'>
             <label htmlFor="email">Email</label>
-            <input type="text" name="email" value={input.password} onChange={handleInp} className='border border-orange-500 rounded-lg p-1'/>
+            <input 
+	  type="text" 
+	  name="email" 
+	  onChange={(e) => setInput({ ...input, [e.target.name]: e.target.value, })} 
+	  className='text-blue-500 border border-orange-500 rounded-lg p-1'/>
+        </div>
+        <div className='grid grid-cols-1 gap-2 mt-8'>
+            <label htmlFor="password">Username</label>
+            <input 
+	  type="text" 
+	  name='username' 
+	  onChange={(e) => setInput({...input, [e.target.name]: e.target.value, })} 
+	  className='text-blue-500 border border-orange-500 rounded-lg p-1'/>
         </div>
         <div className='grid grid-cols-1 gap-2 mt-8'>
             <label htmlFor="password">Password</label>
-            <input type="password" name='password' value={input.password} onChange={handleInp} className='border border-orange-500 rounded-lg p-1'/>
-        </div>
-        <div className='grid grid-cols-1 gap-2 mt-8'>
-            <label htmlFor="password">Confirm Password</label>
-            <input type="password" id='password' className='border border-orange-500 rounded-lg p-1'/>
+            <input 
+	  type="password"
+	  id='password'
+	  onChange={(e) => setInput({...input, [e.target.name]: e.target.value, })}
+	  className='text-blue-500 border border-orange-500 rounded-lg p-1'/>
         </div>
         <div className='mt-8 flex items-center justify-between'>
             <div>
@@ -53,9 +67,9 @@ const Signup = () => {
         
         </div>
         <div className='mt-8 flex items-center justify-center' onClick={handleSignUp}>
-            <Link to={`${link}`}  className='active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out transition-all w-full py-3 bg-gradient-to-r from-orange-500 to-orange-800 rounded-xl border text-center'>
+	  <button className='active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out transition-all w-full py-3 bg-gradient-to-r from-orange-500 to-orange-800 rounded-xl border text-center'>
             Sign Up
-            </Link>
+            </button>
             {/* <button className='active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out transition-all w-full py-3 bg-gradient-to-r from-orange-500 to-orange-800 rounded-xl border'>
                 Sign in
             </button> */}

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import SideProfile from '../components/SideProfile'
 import SideMenu from '../components/SideMenu'
 import SearchBar from '../components/SearchBar'
@@ -13,10 +13,9 @@ import { useState } from 'react'
 import ServicesLayout from './ServicesLayout'
 import PendingPage from './PendingPage'
 import { Rss, Gauge,HandPlatter,CircleDashed,BotMessageSquare} from 'lucide-react'
-
-
-
-
+import ChatBot from '../components/ChatBot'
+import Crypto from '../components/Crypto'
+import { GlobeLock, LogOut } from 'lucide-react';
 
 
 
@@ -32,9 +31,18 @@ const renderComp=()=>{
       return <ServicesLayout/>
     case 'pending':
       return <PendingPage/>
+    case 'chatbot':
+      return <ChatBot/>
+    case 'crypto':
+      return <Crypto/>
     default:
       return <DashMain/>
   }
+}
+const navigate = useNavigate()
+const handleLogout = () => {
+	localStorage.removeItem('U_id');
+	navigate('/home')
 }
 
 
@@ -95,7 +103,7 @@ const renderComp=()=>{
           </div>
           
         </div>
-        <div className='mt-5 bg-neutral-800 py-3 px-2 rounded-xl   text-orange-500 space-x-2 hover:border hover:border-orange-500 cursor-pointer 'onClick={()=>setCurrentComp('services')}>
+        <div className='mt-5 bg-neutral-800 py-3 px-2 rounded-xl   text-orange-500 space-x-2 hover:border hover:border-orange-500 cursor-pointer 'onClick={()=>setCurrentComp('chatbot')}>
           <div className="flex items-center justify-start text-sm  w-full  ">
                 <span >
                    <span ><BotMessageSquare size={20} className="flex justify-start items-center mr-1 "/></span>
@@ -104,11 +112,29 @@ const renderComp=()=>{
                 </span>
                 <div class="ml-auto text-xs text-gray-500 dark:text-gray-400"><span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">New</span></div>
           </div>
-          
+	  </div>
+        <div className='mt-5 bg-neutral-800 py-3 px-2 rounded-xl   text-orange-500 space-x-2 hover:border hover:border-orange-500 cursor-pointer 'onClick={()=>setCurrentComp('crypto')}>
+          <div className="flex items-center justify-start text-sm  w-full  ">
+                <span >
+                   <span ><GlobeLock size={20} className="flex justify-start items-center mr-1 "/></span>
+                   <span className='text-neutral-100' >Cryptography</span>
+                   
+                </span>
+                <div class="ml-auto text-xs text-gray-500 dark:text-gray-400"><span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">New</span></div>
         </div>
+	  </div>
+        <div 
+	  className='mt-5 bg-neutral-800 py-3 px-2 rounded-xl   text-orange-500 space-x-2 hover:border hover:border-orange-500 cursor-pointer '
+	  onClick={handleLogout}>
+          <div className="flex items-center justify-start text-sm  w-full  ">
+                <span >
+                   <span ><LogOut size={20} className="flex justify-start items-center mr-1 "/></span>
+                   <span className='text-neutral-100' >Logout</span> 
+                </span>
+    	</div>
+	  </div>
     </div>
-        
-    </div>
+	  </div>
     <div class="my-4"></div>
   </aside>
   <main class="main-ml-48 flex flex-grow flex-col p-4 transition-all duration-150 ease-in md:ml-0 ">
